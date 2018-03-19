@@ -1,3 +1,5 @@
+## OpenShift on CentOS 7
+
 Create a single node OpenShift Origin cluster on a CentOS 7 VM through Vagrant. This is intended to be used for a development environment only.
 
 1) Clone the repo
