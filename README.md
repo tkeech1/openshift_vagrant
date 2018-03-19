@@ -7,22 +7,24 @@ $ git clone https://github.com/tkeech1/openshift_vagrant
 $ cd openshift_vagrant/
 ```
 
-2) Start the VM
+2) Replace variable placeholders in the Vagrantfile. Search for instances of 'REPLACE' and provide values.
+
+3) Start the VM
 ```
 $ vagrant up
 ```
 
-3) ssh to VM
+4) ssh to VM
 ```
 $ vagrant ssh 
 ```
 
-4) Login to openshift from inside the VM
+5) Login to openshift from inside the VM
 ```
 $ oc login -u vagrant -p vagrant https://console.<DOMAIN>:8443/
 ````
 
-5) Access the web console
+6) Access the web console
 ```
 $ https://console.<DOMAIN>:8443/
 ```
