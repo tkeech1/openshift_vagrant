@@ -1,6 +1,6 @@
 ## OpenShift on CentOS 7
 
-Create a single node OpenShift Origin cluster on a CentOS 7 VM through Vagrant. This is intended to be used for a development environment only. THis is based on Grant Shipley's <a href="https://github.com/gshipley/installcentos">installcentos</a> project.
+Create a single node OpenShift Origin cluster on a CentOS 7 VM through Vagrant. This is intended to be used for a development environment only. This is based on Grant Shipley's <a href="https://github.com/gshipley/installcentos">installcentos</a> project.
 
 1) Clone the repo
 
@@ -21,7 +21,7 @@ $ vagrant up
 $ vagrant ssh 
 ```
 
-5) Login to openshift from inside the VM
+5) Login to OpenShift from inside the VM
 ```
 $ oc login -u vagrant -p vagrant https://console.<DOMAIN>:8443/
 ````
