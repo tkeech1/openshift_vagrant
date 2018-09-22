@@ -1,0 +1,9 @@
+STORAGE_DRIVER=overlay2
+# set the docker-storage-setup variables to use the new volume group
+# CONTAINER_ROOT_LV_NAME and CONTAINER_ROOT_LV_MOUNT_PATH are needed for overlay2 to create the new logical volume for images
+CONTAINER_ROOT_LV_NAME=dockerlv
+CONTAINER_ROOT_LV_MOUNT_PATH=/var/lib/docker
+# allow overlay to use all available space in the volume group
+CONTAINER_ROOT_LV_SIZE=100%FREE
+DEVS=/dev/sdb
+VG=dockerlv

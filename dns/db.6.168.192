@@ -1,0 +1,21 @@
+;
+; BIND reverse data file for local loopback interface
+;
+$TTL	604800
+@	IN	SOA	ns1.tkeech.io. admin.tkeech.io. (
+			      3		; Serial
+			 604800		; Refresh
+			  86400		; Retry
+			2419200		; Expire
+			 604800 )	; Negative Cache TTL
+;
+; name servers - NS records
+      IN      NS      ns1.tkeech.io.
+; PTR Records
+241   IN      PTR     ns1.tkeech.io.    ; 192.168.6.241
+201   IN      PTR     master1.tkeech.io.  ; 192.168.6.201
+202   IN      PTR     master2.tkeech.io.  ; 192.168.6.202
+203   IN      PTR     master3.tkeech.io.  ; 192.168.6.203
+211   IN      PTR     node1.tkeech.io.  ; 192.168.6.211
+212   IN      PTR     node2.tkeech.io.  ; 192.168.6.212
+221   IN      PTR     lb1.tkeech.io.  ; 192.168.6.221
