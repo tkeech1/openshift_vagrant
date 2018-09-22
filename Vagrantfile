@@ -2,11 +2,12 @@
 # vi: set ft=ruby :
 
 # configures atomic hosts (masters, nodes, load balancers) for openshift
-openshift_constainer_host_script = <<-SHELL
+openshift_container_host_script = <<-SHELL
   sudo su
   cp -r /home/vagrant/sync/ssh /root/.ssh
   cp /home/vagrant/sync/private/id_rsa.pub /root/.ssh/id_rsa.pub
   cp /home/vagrant/sync/private/id_rsa /root/.ssh/id_rsa
+  cp /home/vagrant/sync/private/authorized_keys /root/.ssh/authorized_keys
   chown -R root.root /root/.ssh
   chmod 644 /root/.ssh/id_rsa.pub
   chmod 600 /root/.ssh/id_rsa
@@ -84,7 +85,7 @@ Vagrant.configure("2") do |config|
         vb.customize ['storagectl', :id, '--name', 'SATA Controller', '--add', 'sata', '--portcount', 4]
         vb.customize ['storageattach', :id,  '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', master1disk]
       end  
-    master1.vm.provision "shell", inline: openshift_constainer_host_script
+    master1.vm.provision "shell", inline: openshift_container_host_script
   end 
 
 =begin 
@@ -102,7 +103,7 @@ Vagrant.configure("2") do |config|
         vb.customize ['storagectl', :id, '--name', 'SATA Controller', '--add', 'sata', '--portcount', 4]
         vb.customize ['storageattach', :id,  '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', master2disk]
       end  
-      master2.vm.provision "shell", inline: openshift_constainer_host_script
+      master2.vm.provision "shell", inline: openshift_container_host_script
   end  
 
   config.vm.define "master3" do |master3|
@@ -119,7 +120,7 @@ Vagrant.configure("2") do |config|
         vb.customize ['storagectl', :id, '--name', 'SATA Controller', '--add', 'sata', '--portcount', 4]
         vb.customize ['storageattach', :id,  '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', master3disk]
       end  
-      master3.vm.provision "shell", inline: openshift_constainer_host_script
+      master3.vm.provision "shell", inline: openshift_container_host_script
   end 
 
   config.vm.define "node1" do |node1|
@@ -136,7 +137,7 @@ Vagrant.configure("2") do |config|
         vb.customize ['storagectl', :id, '--name', 'SATA Controller', '--add', 'sata', '--portcount', 4]
         vb.customize ['storageattach', :id,  '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', node1disk]
       end  
-      node1.vm.provision "shell", inline: openshift_constainer_host_script
+      node1.vm.provision "shell", inline: openshift_container_host_script
   end  
   
   config.vm.define "node2" do |node2|
@@ -153,7 +154,7 @@ Vagrant.configure("2") do |config|
         vb.customize ['storagectl', :id, '--name', 'SATA Controller', '--add', 'sata', '--portcount', 4]
         vb.customize ['storageattach', :id,  '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', node2disk]
       end  
-      node2.vm.provision "shell", inline: openshift_constainer_host_script
+      node2.vm.provision "shell", inline: openshift_container_host_script
   end    
 
   config.vm.define "lb1" do |lb1|
@@ -170,7 +171,7 @@ Vagrant.configure("2") do |config|
         vb.customize ['storagectl', :id, '--name', 'SATA Controller', '--add', 'sata', '--portcount', 4]
         vb.customize ['storageattach', :id,  '--storagectl', 'SATA Controller', '--port', 1, '--device', 0, '--type', 'hdd', '--medium', lb1disk]
       end  
-      lb1.vm.provision "shell", inline: openshift_constainer_host_script
+      lb1.vm.provision "shell", inline: openshift_container_host_script
   end   
 =end  
 
